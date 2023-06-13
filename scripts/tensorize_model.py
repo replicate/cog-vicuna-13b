@@ -58,12 +58,7 @@ def tensorize_model(
     serializer.write_module(model)
     serializer.close()
 
-    # Write config to tensorized model weights directory
-    dir_path = os.path.dirname(tensorizer_path)
-    config_path = os.path.join(dir_path, 'config.json')
-    model_config.save_pretrained(config_path)
-
-    logger.info(f"Tensorized model {model_name} in {dtype} and wrote tensors to {tensorizer_path} and config to {config_path}...")
+    logger.info(f"Tensorized model {model_name} in {dtype} and wrote tensors to {tensorizer_path}...")
 
     return {"tensorized_weights_path": tensorizer_path, "dtype": dtype}
 
